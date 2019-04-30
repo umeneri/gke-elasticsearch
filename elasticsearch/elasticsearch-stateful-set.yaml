@@ -75,7 +75,7 @@ spec:
               fieldRef:
                 fieldPath: metadata.name
           - name: discovery.zen.ping.unicast.hosts
-            value: "elasticsearch-0.es.default.svc.cluster.local,elasticsearch-1.es.default.svc.cluster.local,elasticsearch-2.es.default.svc.cluster.local,elasticsearch-3.es.default.svc.cluster.local,elasticsearch-4.es.default.svc.cluster.local"
+            value: "elasticsearch-0.es.default.svc.cluster.local,elasticsearch-1.es.default.svc.cluster.local,elasticsearch-2.es.default.svc.cluster.local"
         volumeMounts:
         - name: data
           mountPath: /usr/share/elasticsearch/data
