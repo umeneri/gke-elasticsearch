@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: es
+  name: es-cluster
   labels:
     service: elasticsearch
 spec:
@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: elasticsearch
+  name: es-endpoint
   labels:
     service: elasticsearch
 spec:
