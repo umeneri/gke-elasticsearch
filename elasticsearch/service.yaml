@@ -20,8 +20,10 @@ metadata:
   name: es-endpoint
   labels:
     service: elasticsearch
+  annotations:
+    cloud.google.com/load-balancer-type: Internal
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     service: elasticsearch
   ports:

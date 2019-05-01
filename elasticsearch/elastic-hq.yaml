@@ -1,36 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cerebro
+  name: elastic-hq
   labels:
-    service: cerebro
+    service: elastic-hq
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: cerebro
+      service: elastic-hq
   template:
     metadata:
       labels:
-        service: cerebro
+        service: elastic-hq
     spec:
       terminationGracePeriodSeconds: 300
       containers:
-      - name: cerebro
-        image: lmenezes/cerebro
+      - name: elastic-hq
+        image: elastichq/elasticsearch-hq
         ports:
-        - containerPort: 9000
+        - containerPort: 5000
           name: http
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: cerebro
+  name: elastic-hq
   labels:
-    service: cerebro
+    service: elastic-hq
 spec:
   type: LoadBalancer
   ports:
-  - port: 9000
+  - port: 5000
   selector:
-    service: cerebro
+    service: elastic-hq
