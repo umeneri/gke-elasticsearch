@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elastic-hq
+  labels:
+    service: elastic-hq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: elastic-hq
+  template:
+    metadata:
+      labels:
+        service: elastic-hq
+    spec:
+      terminationGracePeriodSeconds: 300
+      containers:
+      - name: elastic-hq
+        image: elastichq/elasticsearch-hq
+        ports:
+        - containerPort: 5000
+          name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elastic-hq
+  labels:
+    service: elastic-hq
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+  selector:
+    service: elastic-hq
